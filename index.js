@@ -30,6 +30,13 @@ app.post("/create-contact", (req, res) => {
     contactList.push(req.body)
     return res.redirect("/")
 })
+app.get("/delete-contact/:phone",(req,res)=>{
+    console.log(req.params)
+    let phone=req.params.phone
+    let updatedContactLists=contactList.filter(contact=>contact.phone!==phone)
+    contactList=updatedContactLists
+    return res.redirect("back")
+})
 app.listen(port, (err) => {
     if (err) {
         console.log(err)
