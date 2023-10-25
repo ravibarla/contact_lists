@@ -5,7 +5,9 @@ const __dirname = path.resolve()
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 const port = 3100
+app.use(express.static("assets"))
 app.use(express.urlencoded())
+
 var contactList = [
     {
         "name": "ravi",
