@@ -15,7 +15,7 @@
             <% for(let i of contact_lists ){%>
                 <li>
                     <p>
-                        <%=i.phone%>
+                        <%=i.name%>
                     </p>
                     <p>
                         <%=i.phone%>
@@ -25,10 +25,10 @@
         </ul>
 
     </div>
-    <form action="" method="post">
-        <input type="text" name="name" value="name" placeholder="enter the name">
+    <form action="/create-contact" method="post">
+        <input type="text" name="name" placeholder="enter the name">
 
-        <input type="number" name="phone" value="phone" placeholder="enter the phone">
+        <input type="number" name="phone" placeholder="enter the phone">
         <button type="submit">add contact</button>
     </form>
 </body>

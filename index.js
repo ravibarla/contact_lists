@@ -5,6 +5,7 @@ const __dirname = path.resolve()
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 const port = 3100
+app.use(express.urlencoded())
 var contactList = [
     {
         "name": "ravi",
@@ -24,7 +25,8 @@ app.get("/practice", (req, res) => {
     return res.render("practice", { title: "lets play with ejs" })
 })
 app.post("/create-contact", (req, res) => {
-    return res.redirect("/practice")
+    contactList.push(req.body)
+    return res.redirect("/")
 })
 app.listen(port, (err) => {
     if (err) {
