@@ -1,6 +1,9 @@
 import express from "express"
 import path from "path"
+import { db } from "./views/config/mongoose.js"
+import { Contact } from "./views/config/contact.js"
 const app = express()
+
 const __dirname = path.resolve()
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
@@ -30,11 +33,11 @@ app.post("/create-contact", (req, res) => {
     contactList.push(req.body)
     return res.redirect("/")
 })
-app.get("/delete-contact/:phone",(req,res)=>{
+app.get("/delete-contact/:phone", (req, res) => {
     console.log(req.params)
-    let phone=req.params.phone
-    let updatedContactLists=contactList.filter(contact=>contact.phone!==phone)
-    contactList=updatedContactLists
+    let phone = req.params.phone
+    let updatedContactLists = contactList.filter(contact => contact.phone !== phone)
+    contactList = updatedContactLists
     return res.redirect("back")
 })
 app.listen(port, (err) => {
